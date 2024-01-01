@@ -87,7 +87,7 @@ function mouseOverListener(e: MouseEvent) {
     const tooltipRect = { top: state.tooltipEl.offsetTop, left: state.tooltipEl.offsetLeft, right: state.tooltipEl.offsetLeft + state.tooltipEl.offsetWidth, width: state.tooltipEl.offsetWidth, height: state.tooltipEl.offsetHeight }
 
     // TODO: actually determine this based on how much overlap we want and how big the ::before (arrow) element is
-    const magicOffset = 4
+    const magicOffset = 6
 
     const slideTolerance = 2
     let top, left, width, shouldSlide = false
@@ -124,7 +124,9 @@ function mouseOverListener(e: MouseEvent) {
     state.tooltipEl.style.setProperty('--top', top + 'px')
     state.tooltipEl.style.setProperty('--left', left + 'px')
 
-    if (shouldSlide) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (!prefersReducedMotion && shouldSlide) {
         state.prevAnim = state.tooltipEl.animate([
             { top: prevTop + 'px', left: prevLeft + 'px', width: prevWidth + 'px' },
             { top: top + 'px', left: left + 'px', width: width + 'px' },

@@ -1,0 +1,16 @@
+{
+  "name": "public-domain-js",
+  "version": "0.0.1",
+  "description": "A collection of high quality javascript tools and components you may copy-paste into your project without worrying about licensing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "Ivy Dingeman",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.10"
+  }
+}
