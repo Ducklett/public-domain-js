@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/demopage.css">
+    <link rel="stylesheet" href="/tooltip.pretty.css">
+    <!-- <link rel="stylesheet" href="/tooltip.basic.css"> -->
+</head>
+
+<body>
+    <article>
+        <h1>Public domain js</h1>
+        <p>A collection of high quality javascript tools and components you may copy-paste into your project without
+            worrying about licensing.</p>
+
+        <p>Do note that these are not inteded to be polished for every use-case, I am simply implementing features when
+            I need them.</p>
+
+        <h2>Tooltips</h2>
+
+        <p>Add a tooltip to anything using the <code>data-tooltip</code> html attribute.</p>
+        <button data-tooltip="Append">A</button>
+        <button data-tooltip="Delete">X</button>
+        <button data-tooltip="Clear">C</button>
+        <p data-tooltip="A paragraph tooltip" style="width: fit-content;">Tooltips can appear on any html element, like
+            this paragraph.</p>
+        <h3>direction</h3>
+        <p>use the <code>data-tooltip-pos</code> attribute to specify a position. Legal values are <code>top</code>,
+            <code>bottom</code>, <code>left</code> and <code>right</code>
+        </p>
+        <p>
+            The tooltip will get the <code>.tooltip-top</code>,
+            <code>.tooltip-bottom</code>, <code>.tooltip-left</code> and <code>.tooltip-right</code> classes assigned
+            accordingly.
+        </p>
+
+        <div style="display: flex;">
+
+            <ul>
+                <li data-tooltip="tooltip one" data-tooltip-dir="right">one</li>
+                <li data-tooltip="tooltip two" data-tooltip-dir="right">two</li>
+                <li data-tooltip="tooltip three" data-tooltip-dir="right">three</li>
+                <li data-tooltip="tooltip four" data-tooltip-dir="right">four</li>
+            </ul>
+            <ul>
+                <li data-tooltip="tooltip one" data-tooltip-dir="left">one</li>
+                <li data-tooltip="tooltip two" data-tooltip-dir="left">two</li>
+                <li data-tooltip="tooltip three" data-tooltip-dir="left">three</li>
+                <li data-tooltip="tooltip four" data-tooltip-dir="left">four</li>
+            </ul>
+        </div>
+        <ul style="display: flex; list-style-type: none; gap: 8px">
+            <li data-tooltip="tooltip one" data-tooltip-dir="bottom">one</li>
+            <li data-tooltip="tooltip two" data-tooltip-dir="bottom">two</li>
+            <li data-tooltip="tooltip three" data-tooltip-dir="bottom">three</li>
+            <li data-tooltip="tooltip four" data-tooltip-dir="bottom">four</li>
+        </ul>
+    </article>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

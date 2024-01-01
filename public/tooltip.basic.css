@@ -1,0 +1,26 @@
+.tooltip {
+    /* essentials */
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    width: fit-content;
+    pointer-events: none;
+    user-select: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    z-index: 1;
+
+    /* basic styles */
+    background-color: black;
+    color: white;
+    font-size: .8em;
+    padding: .25em;
+}
+
+.tooltip-hidden {
+    /*
+    you will probably want to add an animation to delay hiding the tooltip
+    see tooltop.pretty.css for an example
+    */
+    display: none;
+}

@@ -1,0 +1,98 @@
+.tooltip {
+    font-size: .8em;
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    background-color: rgb(23, 70, 237);
+    color: white;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    width: fit-content;
+    isolation: isolate;
+    pointer-events: none;
+    user-select: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    z-index: 1;
+
+    box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.35),
+        0px 1px 4px rgba(0, 0, 0, 0.15),
+        0px 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tooltip span {
+    display: inline-block;
+}
+
+/* mask out the arrow shadow */
+.tooltip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(23, 70, 237);
+    border-radius: 0.25em;
+    z-index: -1;
+}
+
+.tooltip::after {
+    content: '';
+    width: .8em;
+    height: .8em;
+    display: block;
+    background-color: rgb(23, 70, 237);
+    position: absolute;
+    z-index: -10;
+    border-radius: .2em;
+
+    box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.35),
+        0px 1px 4px rgba(0, 0, 0, 0.15),
+        0px 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tooltip-top::after {
+    right: 50%;
+    bottom: -.4em;
+    transform: translateX(50%) rotate(45deg);
+}
+
+.tooltip-bottom::after {
+    right: 50%;
+    top: -.4em;
+    transform: translateX(50%) rotate(45deg);
+}
+
+.tooltip-left::after {
+    top: 50%;
+    right: -.4em;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.tooltip-right::after {
+    top: 50%;
+    left: -.4em;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.tooltip-hidden {
+    animation: hide-tooltip .3s forwards;
+}
+
+@keyframes hide-tooltip {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
