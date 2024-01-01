@@ -26,21 +26,13 @@ export function enableTooltips() {
     }
 
     window.addEventListener('mouseover', state.mouseOverListener)
+    window.addEventListener('mouseout', (e: any) => {
+        if (e.toElement === null && e.relatedTarget === null) {
+            hideTooltip()
+        }
+    })
+
     moveTooltipOffscreen()
-}
-
-export function disableTooltips() {
-    if (!state) return
-
-    window.removeEventListener('mousemove', state.mouseOverListener)
-
-    if (state.hideTimeout) {
-        clearTimeout(state.hideTimeout)
-    }
-
-    state.tooltipContentEl.remove()
-    state.tooltipEl.remove()
-    state = undefined
 }
 
 function moveTooltipOffscreen() {
@@ -56,11 +48,7 @@ function mouseOverListener(e: MouseEvent) {
     const target = e.target as HTMLElement
     const tooltipHolder = target.closest('[data-tooltip]') as HTMLElement
     if (!tooltipHolder) {
-        if (!state.tooltipEl.classList.contains('tooltip-hidden')) {
-            state.tooltipEl.classList.add('tooltip-hidden')
-
-            state.hideTimeout = setTimeout(moveTooltipOffscreen, 1000);
-        }
+        hideTooltip()
 
         return
     }
@@ -68,6 +56,9 @@ function mouseOverListener(e: MouseEvent) {
     if (state.hideTimeout !== undefined) {
         clearTimeout(state.hideTimeout)
     }
+
+    // don't allow new tooltips to show up if we are using a touchscreen
+    if (window.matchMedia("(pointer: coarse)").matches) return
 
     let dir = tooltipHolder.getAttribute('data-tooltip-dir')
     state.tooltipEl.classList.remove('tooltip-top', 'tooltip-bottom', 'tooltip-left', 'tooltip-right')
@@ -141,5 +132,14 @@ function mouseOverListener(e: MouseEvent) {
             easing: 'ease-out',
             duration: 200
         })
+    }
+}
+
+function hideTooltip() {
+    if (!state) return
+    if (!state.tooltipEl.classList.contains('tooltip-hidden')) {
+        state.tooltipEl.classList.add('tooltip-hidden')
+
+        state.hideTimeout = setTimeout(moveTooltipOffscreen, 1000);
     }
 }
