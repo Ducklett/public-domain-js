@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <article>
+    <div class="container" data-page="intro">
         <h1>Public domain js</h1>
         <p>A collection of high quality javascript tools and components you may copy-paste into your project without
             worrying about licensing.</p>
@@ -19,6 +19,22 @@
         <p>Do note that these are not inteded to be polished for every use-case, I am simply implementing features when
             I need them.</p>
 
+        <noscript>
+            <p style="background-color: red; color: white; padding: .5em;">Javascript is disabled in your browser, most
+                demos will not work.</p>
+        </noscript>
+    </div>
+
+    <nav>
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#tooltips">Tooltips</a></li>
+            <li><a href="#masonry">Masonry</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" data-page="tooltips">
         <h2>Tooltips</h2>
 
         <p>Add a tooltip to anything using the <code>data-tooltip</code> html attribute.</p>
@@ -58,7 +74,79 @@
             <li data-tooltip="tooltip three" data-tooltip-dir="bottom">three</li>
             <li data-tooltip="tooltip four" data-tooltip-dir="bottom">four</li>
         </ul>
-    </article>
+    </div>
+
+    <div data-page="masonry">
+        <div class="container">
+            <h2>Masonry</h2>
+
+            <p>We use a progressive enhancement approach to masonries: you define a grid with using
+                <code>grid-template-columns</code> in CSS, we then create columns inside the grid and shuffle the
+                children around to create a nice masonry.
+            </p>
+
+            <p>Simply wrap your grid with <code>ks-masonry</code> and it will automatically be converted if js is
+                enabled.
+            </p>
+        </div>
+
+        <style>
+            .my-masonry {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                justify-content: center;
+                gap: .25em;
+                padding: .25em;
+                border-radius: .5em;
+                background-color: black;
+                max-width: 1200px;
+                margin-inline: auto;
+            }
+
+            .my-masonry img {
+                width: 100%;
+                height: auto;
+                border-radius: .25em;
+            }
+
+            /* our fallback styles, if the masonry loads properly there will be a column element between my-masonry and img */
+            .my-masonry>img {
+                aspect-ratio: 1;
+                object-fit: cover;
+                height: 100%;
+            }
+        </style>
+        <ks-masonry>
+            <div class="my-masonry">
+                <img src="/images/gallery1.jpg" alt="placeholder gallery image 1" width="350" height="243">
+                <img src="/images/gallery2.jpg" alt="placeholder gallery image 2" width="350" height="281">
+                <img src="/images/gallery3.jpg" alt="placeholder gallery image 3" width="350" height="414">
+                <img src="/images/gallery4.jpg" alt="placeholder gallery image 4" width="350" height="517">
+                <img src="/images/gallery5.jpg" alt="placeholder gallery image 5" width="350" height="224">
+                <img src="/images/gallery6.jpg" alt="placeholder gallery image 6" width="350" height="520">
+                <img src="/images/gallery7.jpg" alt="placeholder gallery image 7" width="350" height="437">
+                <img src="/images/gallery8.jpg" alt="placeholder gallery image 8" width="350" height="313">
+                <img src="/images/gallery9.jpg" alt="placeholder gallery image 9" width="350" height="505">
+                <img src="/images/gallery10.jpg" alt="placeholder gallery image 10" width="350" height="341">
+
+                <!-- Duplicate a second time so we have some more to work with  -->
+
+                <img src="/images/gallery1.jpg" alt="placeholder gallery image 1" width="350" height="243">
+                <img src="/images/gallery2.jpg" alt="placeholder gallery image 2" width="350" height="281">
+                <img src="/images/gallery3.jpg" alt="placeholder gallery image 3" width="350" height="414">
+                <img src="/images/gallery4.jpg" alt="placeholder gallery image 4" width="350" height="517">
+                <img src="/images/gallery5.jpg" alt="placeholder gallery image 5" width="350" height="224">
+                <img src="/images/gallery6.jpg" alt="placeholder gallery image 6" width="350" height="520">
+                <img src="/images/gallery7.jpg" alt="placeholder gallery image 7" width="350" height="437">
+                <img src="/images/gallery8.jpg" alt="placeholder gallery image 8" width="350" height="313">
+                <img src="/images/gallery9.jpg" alt="placeholder gallery image 9" width="350" height="505">
+                <img src="/images/gallery10.jpg" alt="placeholder gallery image 10" width="350" height="341">
+            </div>
+        </ks-masonry>
+
+    </div>
+
+
     <script type="module" src="/src/main.ts"></script>
 </body>
 
