@@ -31,6 +31,7 @@
             <li><a href="#intro">Intro</a></li>
             <li><a href="#tooltips">Tooltips</a></li>
             <li><a href="#masonry">Masonry</a></li>
+            <li><a href="#shaders">Shaders</a></li>
         </ul>
     </nav>
 
@@ -144,6 +145,34 @@
             </div>
         </ks-masonry>
 
+    </div>
+
+    <div data-page="shaders" class="container">
+        <h2>Shaders</h2>
+
+        <p>
+            We implement shaders as a progressive enhancement. <br>
+            Create an element with a background, then wrap it in <code>ks-shader</code>.
+            If the shader loads successfully the background of your element will be set to transparent so the
+            shader becomes visible.
+        </p>
+        <ks-shader mousepos="local" src="/shaders/uv-gradient.glsl">
+            <div
+                style="color:white; background-image: url(/images/shader1-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
+                <h3>My shader bg</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis enim ad libero atque nesciunt
+                    placeat nostrum laborum mollitia optio totam vero, illum numquam, sunt adipisci corporis eaque
+                    error, quaerat necessitatibus!</p>
+            </div>
+        </ks-shader>
+
+        <br>
+
+        <ks-shader mousepos="local" src="/shaders/dot-grid.glsl">
+            <div
+                style="color:white; background-image: url(/images/shader2-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
+            </div>
+        </ks-shader>
     </div>
 
 

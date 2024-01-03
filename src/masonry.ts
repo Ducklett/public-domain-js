@@ -18,7 +18,7 @@ export class MasonryElement extends HTMLElement {
         this.masonryChildren = [...container.children]
 
         this.resizeObserver = new ResizeObserver(this.applyLayout.bind(this))
-        this.resizeObserver.observe(document.body)
+        this.resizeObserver.observe(this.container)
 
         this.applyLayout()
     }

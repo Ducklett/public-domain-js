@@ -1,5 +1,6 @@
 import { enableTooltips } from "./tooltip";
 import './masonry'
+import './shader'
 
 enableTooltips()
 
