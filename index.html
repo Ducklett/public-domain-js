@@ -32,6 +32,7 @@
             <li><a href="#tooltips">Tooltips</a></li>
             <li><a href="#masonry">Masonry</a></li>
             <li><a href="#shaders">Shaders</a></li>
+            <li><a href="#fluentmenu">Fluent menu</a></li>
         </ul>
     </nav>
 
@@ -173,6 +174,115 @@
                 style="color:white; background-image: url(/images/shader2-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
             </div>
         </ks-shader>
+    </div>
+
+    <div data-page="fluentmenu" class="container">
+        <h2>Fluent menu</h2>
+        <p>A progressive enhancement to create menu's with a background element that smoothly moves to the selected menu
+            item. Simply wrap your menu in <code>ks-fluentmenu</code>, add an element with the
+            <code>fluent-menu-cursor</code> attribute and mark your menu items with the <code>fluent-menu-item</code>
+            attribute.
+        </p>
+
+        <ks-fluentmenu>
+            <div class="fluent-menu-wrap fm1">
+                <ul class="fluent-menu">
+                    <li fluent-menu-item><a href="#">Home</a></li>
+                    <li fluent-menu-item><a href="#">Our mission</a></li>
+                    <li fluent-menu-item><a href="#">Projects</a></li>
+                    <li fluent-menu-item><a href="#">contact</a></li>
+                </ul>
+                <div fluent-menu-cursor></div>
+            </div>
+        </ks-fluentmenu>
+
+        <br>
+
+        <ks-fluentmenu>
+            <div class="fluent-menu-wrap fm2">
+                <ul class="fluent-menu">
+                    <li fluent-menu-item><a href="#">Home</a></li>
+                    <li fluent-menu-item><a href="#">Our mission</a></li>
+                    <li fluent-menu-item><a href="#">Projects</a></li>
+                    <li fluent-menu-item><a href="#">contact</a></li>
+                </ul>
+                <div fluent-menu-cursor></div>
+            </div>
+        </ks-fluentmenu>
+        <style>
+            .fluent-menu-wrap {
+                position: relative;
+                width: fit-content;
+                isolation: isolate;
+            }
+
+            .fluent-menu {
+                display: flex;
+                list-style-type: none;
+                padding: .5em;
+                margin: unset;
+            }
+
+            [fluent-menu-cursor] {
+                position: absolute;
+                z-index: -1;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                [fluent-menu-cursor] {
+                    transition: .2s all ease-out;
+                }
+            }
+
+            /* style 1: background */
+            .fm1 {
+                background-color: rgb(19, 19, 19);
+                border: 1px solid rgb(0, 0, 0);
+                border-radius: .5em;
+            }
+
+            .fm1 a {
+                padding: 1em .5em;
+                text-decoration: none;
+                color: rgb(220, 220, 220);
+            }
+
+            .fm1 a:hover {
+                color: rgb(244, 244, 244);
+            }
+
+            .fm1 [fluent-menu-cursor] {
+                background-color: #464646;
+                border-radius: .25em;
+                left: calc(1px * var(--left));
+                top: calc(1px * var(--top));
+                width: calc(1px * var(--width));
+                height: calc(1px * var(--height));
+            }
+
+            /* style 2: line under */
+            .fm2 a {
+                padding: 1em .5em;
+                text-decoration: none;
+                color: rgb(32, 32, 32);
+            }
+
+            .fm2 a:hover {
+                color: rgb(14, 14, 235);
+            }
+
+            .fm2 [fluent-menu-cursor] {
+                background-color: rgb(14, 14, 235);
+                border-radius: .25em;
+                left: calc(1px * var(--left));
+                bottom: 2px;
+                width: calc(1px * var(--width));
+                height: 2px;
+            }
+        </style>
+        <script>
+
+        </script>
     </div>
 
 

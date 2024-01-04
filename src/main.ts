@@ -1,6 +1,7 @@
 import { enableTooltips } from "./tooltip";
 import './masonry'
 import './shader'
+import './fluent-menu'
 
 enableTooltips()
 
