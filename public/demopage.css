@@ -16,6 +16,39 @@ nav {
     padding: .5em;
 }
 
+nav h2 {
+    font-size: 1.2rem;
+}
+
+nav ul {
+    margin: unset;
+    padding: unset;
+    list-style-type: none;
+    border-radius: 0.6rem;
+    overflow: hidden;
+}
+
+nav a {
+    display: block;
+    padding: 0.5em;
+    color: rgb(21, 21, 21);
+    text-decoration: none;
+    font-weight: 600;
+    background-color: #fbfdff;
+}
+
+nav a:hover {
+    background-color: #f2f8fd;
+    color: black;
+}
+
+nav a.selected {
+    background-color: #0071e1;
+    color: rgb(232, 245, 255);
+}
+
+
+
 .container {
     max-width: 800px;
     padding-inline: 20px;
