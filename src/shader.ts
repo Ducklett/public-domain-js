@@ -5,6 +5,7 @@ export class ShaderElement extends HTMLElement {
     canvas: HTMLCanvasElement;
     gl: WebGL2RenderingContext;
     contentElement?: HTMLElement;
+    isIntersecting: boolean = false
 
     constructor() {
         super()
@@ -46,11 +47,18 @@ export class ShaderElement extends HTMLElement {
             this.loadShaderFromUrl(src)
         }
 
+        const intersectionObserver = new IntersectionObserver(this.intersectionChange.bind(this))
+        intersectionObserver.observe(this)
+
         const resizeObserver = new ResizeObserver(this.resizeCanvas.bind(this));
 
         // Attach the ResizeObserver to the body
         resizeObserver.observe(this.rootContainer);
 
+    }
+
+    intersectionChange(e: IntersectionObserverEntry[]) {
+        this.isIntersecting = e[0].isIntersecting
     }
 
     resizeCanvas() {
@@ -176,19 +184,22 @@ export class ShaderElement extends HTMLElement {
             function render(t) {
                 const dt = t - prevT
                 prevT = t
-                // Update uniforms
-                gl.uniform1f(timeUniform, t / 1000);
-                gl.uniform1f(deltaTimeUniform, dt);
-                gl.uniform2f(mouseUniform, 1 - this.mouse.x, this.mouse.y); // Example normalized mouse coordinates
-                gl.uniform1f(widthUniform, canvas.width);
-                gl.uniform1f(heightUniform, canvas.height);
 
-                // Clear the canvas
-                gl.clearColor(0.0, 0.0, 0.0, 1.0);
-                gl.clear(gl.COLOR_BUFFER_BIT);
+                if (this.isIntersecting) {
+                    // Update uniforms
+                    gl.uniform1f(timeUniform, t / 1000);
+                    gl.uniform1f(deltaTimeUniform, dt);
+                    gl.uniform2f(mouseUniform, 1 - this.mouse.x, this.mouse.y); // Example normalized mouse coordinates
+                    gl.uniform1f(widthUniform, canvas.width);
+                    gl.uniform1f(heightUniform, canvas.height);
 
-                // Draw the fullscreen quad
-                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                    // Clear the canvas
+                    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+                    gl.clear(gl.COLOR_BUFFER_BIT);
+
+                    // Draw the fullscreen quad
+                    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                }
 
                 // Request the next frame
                 requestAnimationFrame(render.bind(this));
