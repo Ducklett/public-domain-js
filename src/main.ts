@@ -9,8 +9,6 @@ enableTooltips()
 {
     const navlinks = document.querySelectorAll('nav a')
 
-    document.body.classList.add('js-enabled')
-
     let curpage: HTMLElement | undefined
 
     function loadPage(url) {
