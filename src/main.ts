@@ -22,7 +22,7 @@ enableTooltips()
         window.scrollTo(0, 0);
 
         for (let link of navlinks) {
-            const href = link.href.split('#')[1]
+            const href = (link as HTMLAnchorElement).href.split('#')[1]
             if (href == pageName) {
                 link.classList.add('selected')
             } else {
@@ -35,5 +35,12 @@ enableTooltips()
 
     addEventListener("hashchange", e => {
         loadPage(e.newURL)
+    });
+
+    // stop our placeholder # links from doing anything
+    document.addEventListener('click', function (event: any) {
+        if (event.target.tagName === 'A' && event.target.getAttribute('href') === '#') {
+            event.preventDefault();
+        }
     });
 }

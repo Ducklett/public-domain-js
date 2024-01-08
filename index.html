@@ -283,6 +283,14 @@
                 height: calc(1px * var(--height));
             }
 
+            .fm1 .cursor-show {
+                opacity: 1;
+            }
+
+            .fm1 .cursor-hide {
+                opacity: 0;
+            }
+
             /* style 2: line under */
             .fm2 a {
                 padding: 1em .5em;
@@ -301,6 +309,14 @@
                 bottom: 2px;
                 width: calc(1px * var(--width));
                 height: 2px;
+            }
+
+            .fm2 .cursor-show {
+                transform: scaleX(1);
+            }
+
+            .fm2 .cursor-hide {
+                transform: scaleX(0);
             }
         </style>
         <script>
