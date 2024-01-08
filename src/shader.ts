@@ -19,7 +19,6 @@ export class ShaderElement extends HTMLElement {
     constructor() {
         super()
         if (!ShaderElement.intersectionObserver) {
-            console.log('intersection bootstrap')
             ShaderElement.intersectionObserver = new IntersectionObserver(ShaderElement.onIntersectionChange)
         }
 
