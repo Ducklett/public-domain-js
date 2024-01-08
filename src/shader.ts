@@ -1,4 +1,13 @@
 export class ShaderElement extends HTMLElement {
+
+    static intersectionObserver: IntersectionObserver
+
+    static onIntersectionChange(entries: IntersectionObserverEntry[]) {
+        for (let entry of entries) {
+            (entry.target as ShaderElement).isIntersecting = entry.isIntersecting
+        }
+    }
+
     rootContainer: HTMLDivElement;
 
     mouse = { x: .5, y: .5 }
@@ -9,6 +18,10 @@ export class ShaderElement extends HTMLElement {
 
     constructor() {
         super()
+        if (!ShaderElement.intersectionObserver) {
+            console.log('intersection bootstrap')
+            ShaderElement.intersectionObserver = new IntersectionObserver(ShaderElement.onIntersectionChange)
+        }
 
         const children = this.children
 
@@ -47,19 +60,14 @@ export class ShaderElement extends HTMLElement {
             this.loadShaderFromUrl(src)
         }
 
-        const intersectionObserver = new IntersectionObserver(this.intersectionChange.bind(this))
-        intersectionObserver.observe(this)
-
         const resizeObserver = new ResizeObserver(this.resizeCanvas.bind(this));
 
         // Attach the ResizeObserver to the body
         resizeObserver.observe(this.rootContainer);
 
+        ShaderElement.intersectionObserver.observe(this)
     }
 
-    intersectionChange(e: IntersectionObserverEntry[]) {
-        this.isIntersecting = e[0].isIntersecting
-    }
 
     resizeCanvas() {
         // TODO: fix this to resize when the canvas is loaded
