@@ -54,7 +54,6 @@ export class FluentMenu extends HTMLElement {
     hideCursor() {
         if (this.cursorVisible) {
             this.cursorVisible = false
-            console.log('hide')
             this.cursorElement.classList.add('cursor-hide')
             this.cursorElement.classList.remove('cursor-show')
         }
@@ -63,7 +62,6 @@ export class FluentMenu extends HTMLElement {
     showCursor() {
         if (!this.cursorVisible) {
             this.cursorVisible = true
-            console.log('show')
             this.cursorElement.classList.add('cursor-show')
             this.cursorElement.classList.remove('cursor-hide')
         }
