@@ -31,10 +31,23 @@ export class ShaderElement extends HTMLElement {
 
         this.contentElement = this.children[0] as HTMLElement
 
+        const local = this.getAttribute('mousepos') == 'local'
+
+        let clientX = 0, clientY = 0
+        if (local) {
+            window.addEventListener('scroll', e => {
+                const rect = this.getBoundingClientRect()
+                this.mouse.x = (clientX - rect.x) / rect.width
+                this.mouse.y = (clientY - rect.y) / rect.height
+            })
+        }
 
         window.addEventListener('mousemove', e => {
-            const local = this.getAttribute('mousepos') == 'local'
             if (local) {
+                // store them so we can update the mouse pos on scroll
+                clientX = e.clientX
+                clientY = e.clientY
+
                 const rect = this.getBoundingClientRect()
                 this.mouse.x = (e.clientX - rect.x) / rect.width
                 this.mouse.y = (e.clientY - rect.y) / rect.height
