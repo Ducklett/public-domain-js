@@ -15,7 +15,7 @@
         document.body.classList.add('js-enabled')
     </script>
     <div class="container" data-page="intro">
-        <h1>Public domain js</h1>
+        <h1 id="intro">Public domain js</h1>
         <p>A collection of high quality javascript tools and components you may copy-paste into your project without
             worrying about licensing.</p>
 
@@ -23,12 +23,12 @@
             I need them.</p>
 
         <noscript>
-            <p style="background-color: red; color: white; padding: .5em;">Javascript is disabled in your browser, most
-                demos will not work.</p>
+            <p style="background-color: red; color: white; padding: .5em;">Javascript is disabled in your browser,
+                demos will not work and show fallbacks instead.</p>
         </noscript>
     </div>
 
-    <nav>
+    <nav class="primary-nav">
         <h2>Navigation</h2>
         <ul>
             <li><a href="#intro">Intro</a></li>
@@ -40,7 +40,7 @@
     </nav>
 
     <div class="container" data-page="tooltips">
-        <h2>Tooltips</h2>
+        <h2 id="tooltips">Tooltips</h2>
 
         <p>Add a tooltip to anything using the <code>data-tooltip</code> html attribute.</p>
         <button data-tooltip="Append">A</button>
@@ -79,11 +79,12 @@
             <li data-tooltip="tooltip three" data-tooltip-dir="bottom">three</li>
             <li data-tooltip="tooltip four" data-tooltip-dir="bottom">four</li>
         </ul>
+
     </div>
 
     <div data-page="masonry">
         <div class="container">
-            <h2>Masonry</h2>
+            <h2 id="masonry">Masonry</h2>
 
             <p>We use a progressive enhancement approach to masonries: you define a grid with using
                 <code>grid-template-columns</code> in CSS, we then create columns inside the grid and shuffle the
@@ -172,7 +173,7 @@
     </div>
 
     <div data-page="shaders" class="container">
-        <h2>Shaders</h2>
+        <h2 id="shaders">Shaders</h2>
 
         <p>
             We implement shaders as a progressive enhancement. <br>
@@ -200,7 +201,7 @@
     </div>
 
     <div data-page="fluentmenu" class="container">
-        <h2>Fluent menu</h2>
+        <h2 id="fluentmenu">Fluent menu</h2>
         <p>A progressive enhancement to create menu's with a background element that smoothly moves to the selected menu
             item. Simply wrap your menu in <code>ks-fluentmenu</code>, add an element with the
             <code>fluent-menu-cursor</code> attribute and mark your menu items with the <code>fluent-menu-item</code>

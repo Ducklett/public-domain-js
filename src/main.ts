@@ -9,6 +9,44 @@ enableTooltips()
 {
     const navlinks = document.querySelectorAll('nav a')
 
+    for (let i = 0; i < navlinks.length; i++) {
+        const link = navlinks[i] as HTMLAnchorElement;
+        const pageName = link.href.split('#')[1];
+        const page = document.querySelector(`[data-page="${pageName}"]`) as HTMLElement;
+
+        const bottomNavContainer = document.createElement('nav');
+        bottomNavContainer.classList.add('bottom-nav');
+
+        if (i > 0) {
+            const prev = navlinks[i - 1] as HTMLAnchorElement
+
+            const prevLink = document.createElement('a');
+            prevLink.href = prev.href;
+            prevLink.innerHTML = `<small>Previous</small><h3>${i > 0 ? prev.innerText : ''}</h3>`;
+            bottomNavContainer.appendChild(prevLink);
+        } else {
+            const dummy = document.createElement('span');
+            bottomNavContainer.appendChild(dummy);
+        }
+
+        if (i + 1 < navlinks.length) {
+            const next = navlinks[i + 1] as HTMLAnchorElement
+            const nextLink = document.createElement('a');
+            nextLink.href = next.href;
+            nextLink.innerHTML = `<small>Next</small><h3>${i < navlinks.length - 1 ? next.innerText : ''}</h3>`;
+            bottomNavContainer.appendChild(nextLink);
+        }
+
+        if (!page.classList.contains('container')) {
+            const container = document.createElement('div');
+            container.classList.add('container');
+            container.appendChild(bottomNavContainer);
+            page.appendChild(container);
+        } else {
+            page.appendChild(bottomNavContainer);
+        }
+    }
+
     let curpage: HTMLElement | undefined
 
     function loadPage(url) {
