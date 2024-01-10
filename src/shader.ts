@@ -1,12 +1,19 @@
 export class ShaderElement extends HTMLElement {
 
     static intersectionObserver: IntersectionObserver
+    src: string | null;
 
     static onIntersectionChange(entries: IntersectionObserverEntry[]) {
         for (let entry of entries) {
-            (entry.target as ShaderElement).isIntersecting = entry.isIntersecting
+            const e = entry.target as ShaderElement
+            e.isIntersecting = entry.isIntersecting
+            if (entry.isIntersecting && e.src) {
+                e.loadShaderFromUrl(e.src)
+            }
         }
     }
+
+    loaded = false
 
     rootContainer: HTMLDivElement;
 
@@ -15,6 +22,8 @@ export class ShaderElement extends HTMLElement {
     gl: WebGL2RenderingContext;
     contentElement?: HTMLElement;
     isIntersecting: boolean = false
+
+    private loading: boolean = false
 
     constructor() {
         super()
@@ -67,9 +76,9 @@ export class ShaderElement extends HTMLElement {
 
         this.appendChild(this.rootContainer)
 
-        const src = this.getAttribute('src')
-        if (src) {
-            this.loadShaderFromUrl(src)
+        this.src = this.getAttribute('src')
+        if (this.getAttribute('loading') != 'lazy' && this.src) {
+            this.loadShaderFromUrl(this.src)
         }
 
         const resizeObserver = new ResizeObserver(this.resizeCanvas.bind(this));
@@ -91,8 +100,14 @@ export class ShaderElement extends HTMLElement {
         this.gl.viewport(0, 0, width, height);
     }
 
-    loadShaderFromUrl(src: string) {
-        fetch(src).then(dt => dt.text()).then(text => {
+    async loadShaderFromUrl(src: string) {
+        // TODO: allow swapping out shader at runtime
+        if (this.loading || this.loaded) return
+
+        this.loading = true
+
+        try {
+            const text = await fetch(src).then(dt => dt.text())
             // Vertex shader program
             const vsSource = `#version 300 es
 
@@ -225,7 +240,11 @@ export class ShaderElement extends HTMLElement {
                 requestAnimationFrame(render.bind(this));
             }
             requestAnimationFrame(startRender.bind(this))
-        })
+            this.loaded = true
+        } finally {
+            this.loading = false
+        }
+
     }
 }
 
