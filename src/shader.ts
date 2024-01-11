@@ -2,6 +2,7 @@ export class ShaderElement extends HTMLElement {
 
     static intersectionObserver: IntersectionObserver
     src: string | null;
+    contentBg: string = '';
 
     static onIntersectionChange(entries: IntersectionObserverEntry[]) {
         for (let entry of entries) {
@@ -40,6 +41,11 @@ export class ShaderElement extends HTMLElement {
 
         this.contentElement = this.children[0] as HTMLElement
 
+        if (this.contentElement) {
+            this.contentBg = this.contentElement.style.background
+            this.contentElement.style.background = ''
+        }
+
         const local = this.getAttribute('mousepos') == 'local'
 
         let clientX = 0, clientY = 0
@@ -77,6 +83,7 @@ export class ShaderElement extends HTMLElement {
         this.appendChild(this.rootContainer)
 
         this.src = this.getAttribute('src')
+
         if (this.getAttribute('loading') != 'lazy' && this.src) {
             this.loadShaderFromUrl(this.src)
         }
@@ -212,7 +219,7 @@ export class ShaderElement extends HTMLElement {
                 render.bind(this)(t)
 
                 if (this.contentElement) {
-                    this.contentElement.style.background = 'unset'
+                    this.contentElement.style.background = 'unset!important'
                 }
             }
 
@@ -241,6 +248,12 @@ export class ShaderElement extends HTMLElement {
             }
             requestAnimationFrame(startRender.bind(this))
             this.loaded = true
+        } catch (e) {
+            console.error(e)
+            if (this.contentElement) {
+                this.contentElement.style.background = this.contentBg
+            }
+
         } finally {
             this.loading = false
         }
