@@ -17,11 +17,9 @@ p {
     text-wrap: pretty;
 }
 
-
 body.js-enabled [data-page] {
     display: none;
 }
-
 
 .primary-nav {
     position: fixed;
@@ -30,6 +28,7 @@ body.js-enabled [data-page] {
     right: 0;
     background-color: rgba(255, 255, 255, 0.734);
     padding: .5em;
+    z-index: 9;
 }
 
 .primary-nav h2 {

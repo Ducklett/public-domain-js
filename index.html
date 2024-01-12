@@ -36,6 +36,7 @@
             <li><a href="#masonry">Masonry</a></li>
             <li><a href="#shaders">Shaders</a></li>
             <li><a href="#fluentmenu">Fluent menu</a></li>
+            <li><a href="#parallax">Parallax</a></li>
         </ul>
     </nav>
 
@@ -121,52 +122,33 @@
                 object-fit: cover;
                 height: 100%;
             }
+
         </style>
         <ks-masonry>
             <div class="my-masonry">
-                <img src="/images/gallery1.jpg" loading="lazy" alt="placeholder gallery image 1" width="350"
-                    height="243">
-                <img src="/images/gallery2.jpg" loading="lazy" alt="placeholder gallery image 2" width="350"
-                    height="281">
-                <img src="/images/gallery3.jpg" loading="lazy" alt="placeholder gallery image 3" width="350"
-                    height="414">
-                <img src="/images/gallery4.jpg" loading="lazy" alt="placeholder gallery image 4" width="350"
-                    height="517">
-                <img src="/images/gallery5.jpg" loading="lazy" alt="placeholder gallery image 5" width="350"
-                    height="224">
-                <img src="/images/gallery6.jpg" loading="lazy" alt="placeholder gallery image 6" width="350"
-                    height="520">
-                <img src="/images/gallery7.jpg" loading="lazy" alt="placeholder gallery image 7" width="350"
-                    height="437">
-                <img src="/images/gallery8.jpg" loading="lazy" alt="placeholder gallery image 8" width="350"
-                    height="313">
-                <img src="/images/gallery9.jpg" loading="lazy" alt="placeholder gallery image 9" width="350"
-                    height="505">
-                <img src="/images/gallery10.jpg" loading="lazy" alt="placeholder gallery image 10" width="350"
-                    height="341">
+                <img src="/images/gallery1.jpg" loading="lazy" alt="placeholder gallery image 1" width="350" height="243">
+                <img src="/images/gallery2.jpg" loading="lazy" alt="placeholder gallery image 2" width="350" height="281">
+                <img src="/images/gallery3.jpg" loading="lazy" alt="placeholder gallery image 3" width="350" height="414">
+                <img src="/images/gallery4.jpg" loading="lazy" alt="placeholder gallery image 4" width="350" height="517">
+                <img src="/images/gallery5.jpg" loading="lazy" alt="placeholder gallery image 5" width="350" height="224">
+                <img src="/images/gallery6.jpg" loading="lazy" alt="placeholder gallery image 6" width="350" height="520">
+                <img src="/images/gallery7.jpg" loading="lazy" alt="placeholder gallery image 7" width="350" height="437">
+                <img src="/images/gallery8.jpg" loading="lazy" alt="placeholder gallery image 8" width="350" height="313">
+                <img src="/images/gallery9.jpg" loading="lazy" alt="placeholder gallery image 9" width="350" height="505">
+                <img src="/images/gallery10.jpg" loading="lazy" alt="placeholder gallery image 10" width="350" height="341">
 
                 <!-- Duplicate a second time so we have some more to work with  -->
 
-                <img src="/images/gallery1.jpg" loading="lazy" alt="placeholder gallery image 1" width="350"
-                    height="243">
-                <img src="/images/gallery2.jpg" loading="lazy" alt="placeholder gallery image 2" width="350"
-                    height="281">
-                <img src="/images/gallery3.jpg" loading="lazy" alt="placeholder gallery image 3" width="350"
-                    height="414">
-                <img src="/images/gallery4.jpg" loading="lazy" alt="placeholder gallery image 4" width="350"
-                    height="517">
-                <img src="/images/gallery5.jpg" loading="lazy" alt="placeholder gallery image 5" width="350"
-                    height="224">
-                <img src="/images/gallery6.jpg" loading="lazy" alt="placeholder gallery image 6" width="350"
-                    height="520">
-                <img src="/images/gallery7.jpg" loading="lazy" alt="placeholder gallery image 7" width="350"
-                    height="437">
-                <img src="/images/gallery8.jpg" loading="lazy" alt="placeholder gallery image 8" width="350"
-                    height="313">
-                <img src="/images/gallery9.jpg" loading="lazy" alt="placeholder gallery image 9" width="350"
-                    height="505">
-                <img src="/images/gallery10.jpg" loading="lazy" alt="placeholder gallery image 10" width="350"
-                    height="341">
+                <img src="/images/gallery1.jpg" loading="lazy" alt="placeholder gallery image 1" width="350" height="243">
+                <img src="/images/gallery2.jpg" loading="lazy" alt="placeholder gallery image 2" width="350" height="281">
+                <img src="/images/gallery3.jpg" loading="lazy" alt="placeholder gallery image 3" width="350" height="414">
+                <img src="/images/gallery4.jpg" loading="lazy" alt="placeholder gallery image 4" width="350" height="517">
+                <img src="/images/gallery5.jpg" loading="lazy" alt="placeholder gallery image 5" width="350" height="224">
+                <img src="/images/gallery6.jpg" loading="lazy" alt="placeholder gallery image 6" width="350" height="520">
+                <img src="/images/gallery7.jpg" loading="lazy" alt="placeholder gallery image 7" width="350" height="437">
+                <img src="/images/gallery8.jpg" loading="lazy" alt="placeholder gallery image 8" width="350" height="313">
+                <img src="/images/gallery9.jpg" loading="lazy" alt="placeholder gallery image 9" width="350" height="505">
+                <img src="/images/gallery10.jpg" loading="lazy" alt="placeholder gallery image 10" width="350" height="341">
             </div>
         </ks-masonry>
 
@@ -182,8 +164,7 @@
             shader becomes visible.
         </p>
         <ks-shader mousepos="local" src="/shaders/uv-gradient.glsl" loading="lazy">
-            <div
-                style="color:white; background-image: url(/images/shader1-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
+            <div style="color:white; background-image: url(/images/shader1-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
                 <h3>My shader bg</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis enim ad libero atque nesciunt
                     placeat nostrum laborum mollitia optio totam vero, illum numquam, sunt adipisci corporis eaque
@@ -194,8 +175,7 @@
         <br>
 
         <ks-shader mousepos="local" src="/shaders/smin.glsl" loading="lazy">
-            <div
-                style="color:white; background-image: url(/images/shader2-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
+            <div style="color:white; background-image: url(/images/shader2-thumb.png);background-size: cover; padding:1em; min-height: 600px;">
             </div>
         </ks-shader>
     </div>
@@ -319,10 +299,126 @@
             .fm2 .cursor-hide {
                 transform: scaleX(0);
             }
+
         </style>
         <script>
 
         </script>
+    </div>
+    <div data-page="parallax" class="container">
+        <h2>Parallax</h2>
+        <p>If you wrap your element in <code>&lt;ks-parallaxbase&gt;</code> it will define a <code>--parallax-offset-center</code> CSS property you can use to create parallax animations.</p>
+        <ks-parallaxbase>
+            <div class="parallax1">
+                <div>
+                    <h3>Basic parallax demo</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, alias quae ducimus asperiores odit laborum possimus beatae doloribus eveniet laudantium error repellendus! Similique nobis dolorem minima dolore laboriosam quia possimus.</p>
+                </div>
+            </div>
+        </ks-parallaxbase>
+        <p style="margin-top: 4em;">Alternatively you can define the <code>data-parallax="0.30"</code> attribute with any number and we will apply a margin-top for that element automatically, calculated as <code>--parallax-offset-center * [data-parallax]</code>.</p>
+        <ks-parallaxbase>
+            <div class="stack parallax2">
+                <div data-parallax="0">
+                    <h3>Complex parallax demo</h3>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, ducimus!
+                    </p>
+                </div>
+
+                <img data-parallax="0.30" src="/images/gallery1.jpg" loading="lazy" alt="placeholder gallery image 1" width="350" height="243">
+                <img data-parallax="0.4" src="/images/gallery2.jpg" loading="lazy" alt="placeholder gallery image 2" width="350" height="281">
+                <img data-parallax="0.5" src="/images/gallery3.jpg" loading="lazy" alt="placeholder gallery image 3" width="350" height="414">
+                <img data-parallax=".40" src="/images/gallery4.jpg" loading="lazy" alt="placeholder gallery image 4" width="350" height="517">
+            </div>
+        </ks-parallaxbase>
+        <style>
+            .parallax1 {
+                position: relative;
+                height: 50vh;
+                background-image: url(/images/gallery8.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position-y: calc(50% + 1px * var(--parallax-offset-center) * .5);
+                color: white;
+                text-shadow: 1px 1px 10px black;
+                padding: 2em;
+                border-radius: .5em;
+                isolation: isolate;
+            }
+
+            .parallax1::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(125, 140, 225, 0.434);
+                z-index: -1;
+            }
+
+
+            .parallax2>*:not(:first-child) {
+                position: absolute;
+                /* left: 0; */
+                top: 0;
+            }
+
+            .parallax2 {
+                position: relative;
+                margin-top: 50vh;
+                margin-bottom: 50vh;
+            }
+
+            .parallax2>:nth-child(1) {
+                padding-left: 60px;
+                max-width: 40ch;
+
+                background-color: black;
+                color: white;
+                padding-top: 4em;
+                padding-bottom: 4em;
+                border-radius: .5em;
+                height: fit-content;
+            }
+
+            .parallax2>img {
+                border-radius: .25em;
+            }
+
+            .parallax2>img:nth-child(2) {
+                width: 20%;
+                height: auto;
+                left: 0;
+                transform: translate(-110%, -100%);
+            }
+
+            .parallax2>img:nth-child(3) {
+                width: 30%;
+                right: 0;
+                height: auto;
+                transform: translate(-20%, -10%);
+            }
+
+            .parallax2>img:nth-child(4) {
+                width: 25%;
+                margin-left: auto;
+                height: auto;
+                top: 0;
+                right: 0;
+                transform: translate(-10%, 30%);
+            }
+
+            .parallax2>img:nth-child(5) {
+                width: 20%;
+                height: auto;
+                top: 0;
+                left: 0;
+                transform: translate(-85%, 20%);
+            }
+
+        </style>
     </div>
 
 
