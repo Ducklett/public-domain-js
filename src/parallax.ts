@@ -21,6 +21,7 @@ class ParallaxBase extends HTMLElement {
         ParallaxBase.observer.observe(this)
 
         window.addEventListener('scroll', this.updateOffsetFromCenter.bind(this))
+        window.addEventListener('resize', this.updateOffsetFromCenter.bind(this))
     }
 
     updateOffsetFromCenter() {
